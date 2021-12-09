@@ -64,6 +64,7 @@ public class ShootOutPoint : MonoBehaviour
     public void EnemyKilled()
     {
         enemyKilled++;
+        
         if (enemyKilled == _enemyList.Length)
         {
             moveNextPoint();

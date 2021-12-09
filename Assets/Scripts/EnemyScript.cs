@@ -5,11 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour, IHitable
 {
-    [SerializeField] int maxHealth;
-    [SerializeField] Transform targetPosition;
-    
+    [SerializeField] int maxHealth; //max health to set current enemy health
+    [SerializeField] Transform targetPosition; //position enemy walking into
     [SerializeField] private int currentHealth;
-    private Transform player;
+
+    private Vector3 _movementLocal;
+    
+    private Animator _animator;
+    private Transform player;      
     private bool isDead;
     private NavMeshAgent agent;
     private ShootOutPoint shootOutPoint;
@@ -18,12 +21,29 @@ public class EnemyScript : MonoBehaviour, IHitable
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = Camera.main.transform;
+        player = Camera.main.transform; //get reference to player via main camera
+        _animator = GetComponentInChildren<Animator>();
         
         //ignore update rotation when init
         agent.updateRotation = false;
+        agent.updatePosition = false;
     }
 
+    void RunBlend()
+    {
+        if (_animator == null || !_animator.enabled)
+            return;
+        
+        if ((agent.nextPosition - transform.position).sqrMagnitude > 0.01f)
+        {
+            _movementLocal = transform.InverseTransformDirection(agent.nextPosition - transform.position);
+        } 
+        
+        _animator.SetFloat("Z_Speed",_movementLocal.z);
+        _animator.SetFloat("X_Speed",_movementLocal.x);
+    }
+
+    // Init is called when enemy first spawn
     public void Init(ShootOutPoint point)
     {
         currentHealth = maxHealth;
@@ -33,7 +53,6 @@ public class EnemyScript : MonoBehaviour, IHitable
         {
             agent.SetDestination(targetPosition.position); // Move enemy to target position
         }
-
     }
 
     // Update is called once per frame
@@ -46,6 +65,8 @@ public class EnemyScript : MonoBehaviour, IHitable
             direction.y = 0f;
             transform.rotation = Quaternion.LookRotation(direction);
         }
+
+        RunBlend();
     }
 
     public void Hit(RaycastHit hit)
