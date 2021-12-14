@@ -31,16 +31,28 @@ public class EnemyScript : MonoBehaviour, IHitable
 
     void RunBlend()
     {
-        if (_animator == null || !_animator.enabled)
+        if (_animator == null || !_animator.enabled || isDead)
             return;
         
-        if ((agent.nextPosition - transform.position).sqrMagnitude > 0.01f)
-        {
-            _movementLocal = transform.InverseTransformDirection(agent.nextPosition - transform.position);
-        } 
+        // if ((agent.nextPosition - transform.position).sqrMagnitude > 0.01f)
+        // {
+        //     _movementLocal = transform.InverseTransformDirection(agent.nextPosition - transform.position);
+        // }
+        //
         
-        _animator.SetFloat("Z_Speed",_movementLocal.z);
-        _animator.SetFloat("X_Speed",_movementLocal.x);
+        if (agent.remainingDistance > 0.01f)
+        {
+            _movementLocal = Vector3.Lerp(_movementLocal, transform.InverseTransformDirection(agent.velocity).normalized,2f * Time.deltaTime);
+            agent.nextPosition = transform.position;
+        }
+        else
+        {
+            _movementLocal = Vector3.zero;
+        }
+
+        _animator.SetFloat("X Speed",_movementLocal.x);
+        _animator.SetFloat("Z Speed",_movementLocal.z);
+        
     }
 
     // Init is called when enemy first spawn
@@ -81,7 +93,13 @@ public class EnemyScript : MonoBehaviour, IHitable
             isDead = true; //set enemy to dead 
             agent.enabled = false; //disable enemy on inspector
             shootOutPoint.EnemyKilled();
-            Destroy(gameObject);
+            _animator.SetTrigger("Dead");
+            _animator.SetBool("Is Dead",true);
+            Destroy(gameObject,4f);
+        }
+        else
+        {
+            _animator.SetTrigger("Shot");
         }
     }
 }
