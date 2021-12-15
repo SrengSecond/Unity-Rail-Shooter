@@ -30,12 +30,15 @@ public class PlayerScripts : MonoBehaviour
                 if (hitInfo.collider != null)
                 {
                     //find whether collider hit have IHitable script
-                    IHitable hitable = hitInfo.collider.GetComponent<IHitable>();
+                    IHitable[] hitables = hitInfo.collider.GetComponents<IHitable>();
 
-                    if (hitable != null)
+                    if (hitables != null && hitables.Length > 0)
                     {
-                        //if so, trigger function hit inside hitable object
-                        hitable.Hit(hitInfo);
+                        foreach (var hitable in hitables)
+                        {
+                            //if so, trigger function hit inside hitables object
+                            hitable.Hit(hitInfo);
+                        }
                     }
                     
                     Debug.Log(hitInfo.collider.gameObject.name);

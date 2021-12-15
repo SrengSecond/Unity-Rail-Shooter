@@ -31,7 +31,7 @@ public class EnemyScript : MonoBehaviour, IHitable
 
     void RunBlend()
     {
-        if (_animator == null || !_animator.enabled || isDead)
+        if (_animator == null || !_animator.enabled || isDead || !agent.enabled)
             return;
         
         // if ((agent.nextPosition - transform.position).sqrMagnitude > 0.01f)
@@ -81,13 +81,13 @@ public class EnemyScript : MonoBehaviour, IHitable
         RunBlend();
     }
 
-    public void Hit(RaycastHit hit)
+    public void Hit(RaycastHit hit, int damage = 1)
     {
         if (isDead)
             return; //if enemy is already dead terminate the function
         
         Debug.Log("Enemy got hit");
-        currentHealth--; //remove health when enemy got hit
+        currentHealth -= damage ; //remove health when enemy got hit
         if (currentHealth <= 0)
         {
             isDead = true; //set enemy to dead 
