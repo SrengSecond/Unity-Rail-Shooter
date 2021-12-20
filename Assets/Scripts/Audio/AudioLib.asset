@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b8593d5828d045a2636bac3c625dd, type: 3}
+  m_Name: AudioLib
+  m_EditorClassIdentifier: 
+  _audioList:
+  - _audioName: handgun
+    _audioClips:
+    - {fileID: 8300000, guid: 280d59b4f66832a4eb230781d4f64e10, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: machinegun
+    _audioClips:
+    - {fileID: 8300000, guid: d55e5f67c4401af49b8c8d577c5383d5, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: revolver
+    _audioClips:
+    - {fileID: 8300000, guid: 789627a9e74f9eb46bb4159e50172d75, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: reload
+    _audioClips:
+    - {fileID: 8300000, guid: 89d28fd2b62766444813f56852b86e1f, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: warning
+    _audioClips:
+    - {fileID: 8300000, guid: 458bb7cae9635a44fb49dcfc89852c40, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: hitable
+    _audioClips:
+    - {fileID: 8300000, guid: 6277b9dab0ea4d04eabe63a443600d95, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: playerDamage
+    _audioClips:
+    - {fileID: 8300000, guid: 60e53e0e9e3f71940ab5a8fbd36fe5cc, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: empty
+    _audioClips:
+    - {fileID: 8300000, guid: 867483dfc167ba14a8c06781a90a87a4, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: pickup
+    _audioClips:
+    - {fileID: 8300000, guid: 867483dfc167ba14a8c06781a90a87a4, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: hit effect
+    _audioClips:
+    - {fileID: 8300000, guid: fc12a7c284c29da40b8847f156bf1de1, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: don't shoot
+    _audioClips:
+    - {fileID: 8300000, guid: d75028d8680c48e4f955ebfe8cffddf5, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: explotion
+    _audioClips:
+    - {fileID: 8300000, guid: 7e0cbce0ff84f254d941380b9983fa48, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: hit effect wall
+    _audioClips:
+    - {fileID: 8300000, guid: eb2ec3b0f57bfd241a8cb07982972f14, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1
+  - _audioName: music
+    _audioClips:
+    - {fileID: 8300000, guid: 3bc5e5a4e89dc6e4bb6ba793480eac71, type: 3}
+    minPitch: 0.9
+    maxPitch: 1.1

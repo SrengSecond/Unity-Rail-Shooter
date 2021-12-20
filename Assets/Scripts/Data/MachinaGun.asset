@@ -14,6 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   type: 1
   rate: 0.15
-  maxAmmo: 10
+  maxAmmo: 60
   damageValue: 2
   defaultWeapon: 0
+  gunshotsfx:
+    id: 1
+  reloadSfx:
+    id: 3
+  emptySfx:
+    id: 7
+  reloadWarningSfx:
+    id: 4
+  muzzleFx: {fileID: 0}
+  fxScale: 0.1
+  WeaponIcon: {fileID: -644297780690176812, guid: 868b9b5f99c516e45ad369e9addc55b5,
+    type: 3}
